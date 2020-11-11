@@ -1,7 +1,16 @@
 @Library('library-demo') _
-samplePipeline {
-    branch = 'master'
-    scmUrl = 'ssh://git@myScmServer.com/repos/myRepo.git'
-    email = 'team@example.com'
-  
+
+pipeline {
+    agent any
+    stages {
+        stage('Git Checkout') {
+            steps {
+            gitCheckout(
+                branch: "master",
+                sshkey: "new-ssh-key",
+                url: "git@github.com:scmexpert/maven_hello_world.git"
+            )
+            }
+    }
+    }
 }
