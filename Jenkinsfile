@@ -14,7 +14,7 @@ pipeline {
         }
         stage('build') {
                 steps {
-                    sh 'echo compile'
+                    mvncompile()
                 }
             }
 
