@@ -16,16 +16,13 @@ def pipelineParams= [:]
 
             stage('build') {
                 steps {
-                    sh 'mvn clean package -DskipTests=true'
+                    sh 'mvn clean compile'
                 }
             }
 
             stage ('test') {
                 steps {
-                    parallel (
-                        "unit tests": { sh 'mvn test' },
-                        "integration tests": { sh 'mvn integration-test' }
-                    )
+                    sh 'mvn test'
                 }
             }
 
