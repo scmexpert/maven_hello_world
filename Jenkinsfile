@@ -11,6 +11,23 @@ pipeline {
                 url: "git@github.com:scmexpert/maven_hello_world.git"
             )
             }
-    }
+        }
+        stage('build') {
+                steps {
+                    sh 'echo compile'
+                }
+            }
+
+            stage ('test') {
+                steps {
+                    sh 'echo  test'
+                }
+            }
+
+            stage('deploy'){
+                steps {
+                    sh 'echo deploy'
+                }
+            }
     }
 }
